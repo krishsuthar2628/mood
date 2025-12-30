@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Funny Mood Fixer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffeef2;
+            text-align: center;
+            padding-top: 70px;
+        }
+
+        #container {
+            display: inline-block;
+            padding: 100px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            animation: pop 0.5s ease;
+        }
+
+        @keyframes pop {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        #funButton {
+            padding: 12px 20px;
+            font-size: 18px;
+            background: #ff4da6;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: none;
+            animation: pop 0.5s ease;
+        }
+
+        #funButton:hover {
+            background: #e60073;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-size: 20px;
+            color: #ff0066;
+            font-weight: bold;
+            min-height: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <h2 id="question">Kya aapka mood off hai? </h2>
+
+    <input id="answer" type="text" placeholder="Ooo yaha likho...">
+    <button id="submitBtn" onclick="checkMood()">jor se maro</button>
+
+    <button id="funButton" onclick="showFunnyLine()">MEKO MARO..🤣</button>
+
+    <p id="message"></p>
+</div>
+
+<script>
+    let funnyLines = [
+        "Aap dukhi? Kisne bola allowed hai? 😤",
+        "Arey mood off? Chalo me hu na, free ka comedian! 🤡",
+        "Ek smile dedo warna me yaha dance start kar dunga! 💃😂",
+        "Haso nahi to me aapka WiFi slow kar dunga! 📶😈",
+        "Ab to muskurado, warna me gaaana gaa dunga! 🎤😂",
+        "Bas ab vapas smile kar do 😁❤️"
+
+    ];
+
+    let index = 0;
+
+    function checkMood() {
+        let val = document.getElementById("answer").value.trim().toLowerCase();
+
+        if (val === "yes") {
+
+            // Hide all initial elements
+            document.getElementById("answer").style.display = "none";
+            document.getElementById("submitBtn").style.display = "none";
+            document.getElementById("question").style.display = "none";
+
+            // Show funny button
+            document.getElementById("funButton").style.display = "inline-block";
+            document.getElementById("message").innerHTML = "Chalo ab yeh button dabao! 😎👇";
+
+        } else {
+            document.getElementById("message").innerHTML = "Chup chap YES likho 😑";
+        }
+    }
+
+    function showFunnyLine() {
+        if (index < funnyLines.length) {
+            document.getElementById("message").innerHTML = funnyLines[index];
+            index++;
+        } else {
+            document.getElementById("message").innerHTML = "chalo chalo khatam ho gya free me itna hi milta he 😁❤️";
+        }
+    }
+</script>
+
+</body>
+</html>
